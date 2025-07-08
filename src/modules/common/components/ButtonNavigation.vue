@@ -6,14 +6,14 @@
       class="flex items-center space-x-1.5 px-4 bg-blue-500 disabled:bg-gray-300 rounded-lg hover:bg-blue-600 transition-all"
     >
       <ArrowLeft></ArrowLeft>
-      <span class="text-white">Anterior</span>
+      <span>Anterior</span>
     </button>
     <button
       :disabled="hasMoreData"
       @click="$router.push({ query: { page: page + 1 } })"
       class="flex items-center space-x-1.5 px-4 bg-blue-500 disabled:bg-gray-300 rounded-lg hover:bg-blue-600 transition-all"
     >
-      <span class="text-white">Siguiente</span>
+      <span>Siguiente</span>
       <ArrowRigh></ArrowRigh>
     </button>
   </div>
@@ -25,12 +25,12 @@ import ArrowRigh from '@/icons/ArrowRigh.vue';
 
 //sigue el video 32 :)
 
-interface props {
+interface Props {
   page: number;
   isFirstPage: boolean;
   hasMoreData: boolean;
 }
-defineProps<props>();
+defineProps<Props>();
 </script>
 
 <style scoped></style>
