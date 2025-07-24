@@ -11,9 +11,9 @@
 </template>
 
 <script setup lang="ts">
-import CustomFooter from '../components/customFooter.vue'
-import topMenu from '../components/topMenu.vue'
-import { RouterView } from 'vue-router'
+import CustomFooter from '../components/customFooter.vue';
+import topMenu from '../components/topMenu.vue';
+import { RouterView } from 'vue-router';
 </script>
 
 <style scoped></style>

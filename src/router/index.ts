@@ -1,5 +1,7 @@
-import ShopLayout from '@/modules/shop/layouts/shopLayout.vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import { adminRoutes } from '@/modules/admin/routes';
+import { authRoutes } from '@/modules/auth/routes';
+import ShopLayout from '@/modules/shop/layouts/shopLayout.vue';
+import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,16 +18,9 @@ const router = createRouter({
         },
       ],
     },
-
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue'),
-    // },
+    authRoutes,
+    adminRoutes,
   ],
-})
+});
 
-export default router
+export default router;

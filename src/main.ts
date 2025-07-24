@@ -1,16 +1,24 @@
-import './assets/main.css';
-import './style.css';
+import './assets/main.css'
+import './style.css'
 
-import { createApp } from 'vue';
-import { createPinia } from 'pinia';
-import { VueQueryPlugin } from '@tanstack/vue-query';
 
-import App from './App.vue';
-import router from './router';
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import { VueQueryPlugin } from '@tanstack/vue-query'
 
-const app = createApp(App);
-app.use(VueQueryPlugin);
-app.use(createPinia());
-app.use(router);
+import Toast from "vue-toastification";
+// Import the CSS or use your own!
+import "vue-toastification/dist/index.css";
 
-app.mount('#app');
+
+import App from './App.vue'
+import router from './router'
+
+const app = createApp(App)
+
+app.use(VueQueryPlugin)
+app.use(createPinia())
+app.use(router)
+app.use(Toast);
+
+app.mount('#app')
