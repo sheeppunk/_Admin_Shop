@@ -53,7 +53,9 @@
   </form>
   <!-- Sign up  Link -->
   <div class="mt-6 text-blue-500 text-center">
-    <RouterLink :to="{ name: 'login' }" class="hover:underline">Ya tienes una cuenta? Inicia Sesión</RouterLink>
+    <RouterLink :to="{ name: 'login' }" class="hover:underline"
+      >Ya tienes una cuenta? Inicia Sesión</RouterLink
+    >
   </div>
 </template>
 
@@ -63,7 +65,6 @@ import { useRouter } from 'vue-router';
 import { useAuthStores } from '../stores/authStores';
 import { useToast } from 'vue-toastification';
 
-
 const router = useRouter();
 const authStore = useAuthStores();
 const toast = useToast();
@@ -72,17 +73,12 @@ const myForm = reactive({
   fullName: '',
   email: '',
   password: '',
-
 });
 
 const onRegister = async () => {
-  const {ok, message} = await authStore.register(myForm.fullName, myForm.email, myForm.password);
-   console.log(myForm);
+  const { ok, message } = await authStore.register(myForm.fullName, myForm.email, myForm.password);
+  console.log(myForm);
   if (ok) return;
   toast.error(message);
 };
-
-
-
-
 </script>

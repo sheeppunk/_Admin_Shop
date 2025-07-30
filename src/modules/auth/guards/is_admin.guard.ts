@@ -7,7 +7,7 @@ const isAdminGuard = async (
   from: RouteLocationNormalized,
   next: NavigationGuardNext,
 ) => {
-  const authStore=useAuthStores();
+  const authStore = useAuthStores();
   await authStore.checkAuthStatus();
 
   authStore.isAdmin ? next() : next({ name: 'home' });

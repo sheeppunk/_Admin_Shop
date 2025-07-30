@@ -7,20 +7,16 @@ const isAuthenticatedGuard = async (
   from: RouteLocationNormalized,
   next: NavigationGuardNext,
 ) => {
+  const isNotAuthenticatedGuard = async (
+    to: RouteLocationNormalized,
+    from: RouteLocationNormalized,
+    next: NavigationGuardNext,
+  ) => {
+    const authStore = useAuthStores();
+    await authStore.checkAuthStatus();
 
-const isNotAuthenticatedGuard = async (
-  to: RouteLocationNormalized,
-  from: RouteLocationNormalized,
-  next: NavigationGuardNext,
-) => {
-  const authStore=useAuthStores();
-  await authStore.checkAuthStatus();
-
-  authStore.authStatus===AuthStatus.Unauthenticated
-  ? next({ name: 'home' })
-  : next();
-};
-
+    authStore.authStatus === AuthStatus.Unauthenticated ? next({ name: 'home' }) : next();
+  };
 };
 
 export default isAuthenticatedGuard;

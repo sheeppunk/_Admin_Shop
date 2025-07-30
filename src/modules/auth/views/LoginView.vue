@@ -5,7 +5,6 @@
     <div class="mb-4">
       <label for="email" class="block text-gray-600">Correo electronico</label>
       <input
-
         v-model="myForm.email"
         type="text"
         id="email"
@@ -29,8 +28,12 @@
     <!-- Remember Me Checkbox -->
     <div class="mb-4 flex items-center">
       <input
-      v-model="myForm.rememberMe"
-      type="checkbox" id="remember" name="remember" class="text-blue-500" />
+        v-model="myForm.rememberMe"
+        type="checkbox"
+        id="remember"
+        name="remember"
+        class="text-blue-500"
+      />
       <label for="remember" class="text-gray-600 ml-2">Recordar Usuario</label>
     </div>
     <!-- Forgot Password Link -->
@@ -39,7 +42,6 @@
     </div>
     <!-- Login Button -->
     <button
-
       type="submit"
       class="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full"
     >
@@ -72,9 +74,9 @@ const myForm = reactive({
 const onLogin = async () => {
   const ok = await authStore.login(myForm.email, myForm.password);
 
-  if(myForm.rememberMe){
+  if (myForm.rememberMe) {
     localStorage.setItem('email', myForm.email);
-  }else{
+  } else {
     localStorage.removeItem('email');
   }
 
@@ -89,6 +91,4 @@ watchEffect(() => {
     myForm.rememberMe = true;
   }
 });
-
-
 </script>

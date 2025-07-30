@@ -103,30 +103,23 @@
 </template>
 
 <script setup lang="ts">
-import * as Vue from 'vue';
+
 import { getProducts } from '@/modules/products/actions';
-import Productlist from '@/modules/products/components/productlist.vue';
+import Productlist from '@/modules/products/components/ProductList.vue';
 import ButtonNavigation from '@/modules/common/components/ButtonNavigation.vue';
 import { useQuery, useQueryClient } from '@tanstack/vue-query';
-import { ref, watch, watchEffect } from 'vue';
-import { useRoute } from 'vue-router';
+import { watchEffect } from 'vue';
+import { usePagination } from '@/modules/common/composables/usePagination';
 
-const route = useRoute();
-const page = ref(Number(route.query.page || 1));
+
 const queryClient = useQueryClient();
+const { page } = usePagination();
 
 const { data: products = [] } = useQuery({
   queryKey: ['products', { page: page }],
   queryFn: () => getProducts(page.value),
 });
 
-watch(
-  () => route.query.page,
-  (newPage) => {
-    page.value = Number(newPage || 1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  },
-);
 watchEffect(() => {
   queryClient.prefetchQuery({
     queryKey: ['products', { page: page.value + 1 }],
